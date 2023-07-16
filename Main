@@ -1,0 +1,16 @@
+public class Main12 {
+    public static void main(String[] args) {
+        Employee employee = new Employee("Çalışkan Ahmet", 11400, 44, 2000);
+        System.out.println(employee.toString());
+
+        double taxAmount = employee.tax();
+        System.out.println("Vergi: " + taxAmount);
+
+        double bonusAmount = employee.bonus();
+        System.out.println("Bonus: " + bonusAmount);
+
+        employee.raiseSalary();
+        System.out.println("Güncel Maaş: " + employee.getSalary());
+
+    }
+}
