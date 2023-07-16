@@ -1,0 +1,56 @@
+import java.time.LocalDate;
+import java.time.Year;
+
+public class Employee {
+    private String name;
+    private double maaş;
+    private int çalışmaSaati;
+    private int başlangıçYılı;
+
+    public Employee(String name, double maaş, int çalışmaSaati, int başlangıçYılı) {
+        this.name = name;
+        this.maaş = maaş;
+        this.çalışmaSaati = çalışmaSaati;
+        this.başlangıçYılı = başlangıçYılı;
+    }
+
+    public double tax() {
+        if (maaş < 1000) {
+            return 0;
+        } else {
+            return maaş * 0.03;
+        }
+    }
+
+    public double bonus() {
+        if (çalışmaSaati > 40) {
+            int extraHours = çalışmaSaati - 40;
+            return extraHours * 30;
+        } else {
+            return 0;
+        }
+    }
+
+    public void raiseSalary() {
+        int yearsWorked = Year.now().getValue() - başlangıçYılı;
+        if (yearsWorked < 10) {
+            maaş *= 1.05;
+        } else if (yearsWorked < 20) {
+            maaş *= 1.1;
+        } else {
+            maaş *= 1.15;
+        }
+    }
+
+    public double getSalary() {
+        return maaş;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee Name: " + name +
+                "\nSalary: " + maaş +
+                "\nWork Hours: " + çalışmaSaati +
+                "\nHire Year: " + başlangıçYılı;
+    }
+}
